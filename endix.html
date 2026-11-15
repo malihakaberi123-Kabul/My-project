@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find your next favorite at Paper & Page, an independent bookstore for thoughtful readers."
+    />
+    <title>Paper & Page — Find your next favorite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">
+      A little something for your next chapter <span>— free shipping on orders $40+</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Paper and Page home">
+        <span class="brand-mark" aria-hidden="true">p<span>&</span></span>
+        <span class="brand-name">paper <i>&</i> page</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#books">Shop books</a>
+        <a href="#about">Our story</a>
+        <a href="#newsletter">The Sunday edit</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-box">
+          <span class="sr-only">Search books</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+          <input id="search-input" type="search" placeholder="Find a book..." autocomplete="off" />
+        </label>
+        <button class="cart-button" id="open-cart" type="button" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+          <span class="cart-label">Bag</span>
+          <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> An independent bookstore for curious minds</p>
+          <h1 id="hero-title">A good book<br />changes <em>everything.</em></h1>
+          <p class="hero-description">
+            The kind you stay up too late reading. The one you press into a friend’s hands.
+            Find your next favorite right here.
+          </p>
+          <a class="button button-dark" href="#books">Find your next read <span aria-hidden="true">↗</span></a>
+          <div class="reader-note">
+            <div class="reader-avatars" aria-hidden="true"><span>J</span><span>M</span><span>A</span></div>
+            <p><strong>Good books, good company.</strong><br />Loved by readers in 42 countries</p>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="A welcoming reading nook with books and a cup of tea" role="img">
+          <div class="sun-shape"></div>
+          <div class="hero-shelf"></div>
+          <div class="hero-book book-one"><span>THE<br />QUIET<br />HOURS</span><small>ELLA WILDER</small></div>
+          <div class="hero-book book-two"><span>WAYS OF<br />SEEING<br />THE WORLD</span><small>J. MOREAU</small></div>
+          <div class="hero-book book-three"><span>GROW<br />SLOW</span><small>A FIELD GUIDE</small></div>
+          <div class="hero-sticker">your next<br /><i>favorite</i></div>
+          <div class="hero-caption"><span>01 / 04</span><span>Make room for wonder.</span></div>
+        </div>
+      </section>
+
+      <section class="book-section" id="books">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Picked with care, read with joy</p>
+            <h2>Books worth <em>lingering over.</em></h2>
+          </div>
+          <p class="section-aside">A few of our current favorites,<br />chosen by real-life book lovers.</p>
+        </div>
+
+        <div class="shop-toolbar">
+          <div class="category-list" id="category-list" aria-label="Filter books by category">
+            <button class="category-chip is-active" data-category="All books" type="button">All books</button>
+            <button class="category-chip" data-category="Fiction" type="button">Fiction</button>
+            <button class="category-chip" data-category="Nonfiction" type="button">Nonfiction</button>
+            <button class="category-chip" data-category="Poetry" type="button">Poetry</button>
+            <button class="category-chip" data-category="For little ones" type="button">For little ones</button>
+          </div>
+          <label class="sort-control">
+            <span>Sort by</span>
+            <select id="sort-select" aria-label="Sort books">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: low to high</option>
+              <option value="price-high">Price: high to low</option>
+              <option value="title">Title: A to Z</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="book-grid" id="book-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">⌕</span>
+          <h3>No pages turned up.</h3>
+          <p>Try a different title, author, or category.</p>
+          <button class="text-button" id="clear-filters" type="button">Clear your filters ↗</button>
+        </div>
+      </section>
+
+      <section class="quote-band" id="about">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote>
+          A room without books is like a body without a soul.
+          <cite>— Cicero, probably browsing our shelves</cite>
+        </blockquote>
+        <span class="quote-flower" aria-hidden="true">✳</span>
+      </section>
+
+      <section class="newsletter" id="newsletter">
+        <div class="newsletter-icon" aria-hidden="true">✳</div>
+        <div class="newsletter-copy">
+          <p class="eyebrow">A good note in your inbox</p>
+          <h2>For the love of <em>reading.</em></h2>
+          <p>New finds, little-known authors, and the occasional very good sentence. Sundays, not too early.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <label class="sr-only" for="email-input">Your email address</label>
+          <input id="email-input" type="email" placeholder="Your email address" required />
+          <button type="submit" aria-label="Subscribe to the newsletter">Count me in <span aria-hidden="true">↗</span></button>
+          <p id="newsletter-message" aria-live="polite">Demo signup only; your email won’t be stored or sent.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="Paper and Page home">
+        <span class="brand-mark" aria-hidden="true">p<span>&</span></span>
+        <span class="brand-name">paper <i>&</i> page</span>
+      </a>
+      <p>Independent by nature. Bookish by choice.</p>
+      <span>© 2025 Paper & Page Bookshop</span>
+    </footer>
+
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
+      <div class="drawer-header">
+        <div><p class="eyebrow">Good choice</p><h2 id="cart-title">Your book bag</h2></div>
+        <button class="icon-button" id="close-cart" type="button" aria-label="Close shopping bag">×</button>
+      </div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-empty" id="cart-empty">
+        <span aria-hidden="true">✳</span>
+        <p>Your next favorite is waiting.</p>
+        <button class="text-button" id="browse-books" type="button">Browse the shelves ↗</button>
+      </div>
+      <div class="cart-summary" id="cart-summary">
+        <div><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></div>
+        <p>Demo checkout only — no payment is taken.</p>
+        <button class="button button-dark checkout-button" id="checkout-button" type="button">Continue to checkout <span aria-hidden="true">↗</span></button>
+      </div>
+    </aside>
+    <dialog class="checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title">
+      <div class="checkout-header">
+        <div>
+          <p class="eyebrow">A little checkout preview</p>
+          <h2 id="checkout-title">Ready for a new chapter?</h2>
+        </div>
+        <button class="icon-button" id="close-checkout" type="button" aria-label="Close checkout">×</button>
+      </div>
+      <section id="checkout-form-view">
+        <p class="checkout-notice">This is a demo checkout. No payment details are collected and no order is submitted.</p>
+        <div class="checkout-items" id="checkout-items"></div>
+        <div class="checkout-total"><span>Order subtotal</span><strong id="checkout-subtotal">$0.00</strong></div>
+        <button class="button button-dark checkout-button" id="place-order" type="button">Place demo order <span aria-hidden="true">↗</span></button>
+      </section>
+      <section class="checkout-success" id="checkout-success" aria-live="polite" hidden>
+        <span aria-hidden="true">✳</span>
+        <h3>Your next chapter is noted.</h3>
+        <p>This demo order wasn’t submitted or charged.</p>
+        <p class="order-reference">Demo reference <strong id="order-reference"></strong></p>
+        <button class="button button-dark checkout-button" id="finish-checkout" type="button">Back to the bookshop <span aria-hidden="true">↗</span></button>
+      </section>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
